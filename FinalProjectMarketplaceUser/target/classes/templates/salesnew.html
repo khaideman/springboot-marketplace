@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>New Sale</title>
+</head>
+<body>
+<div align="center">
+    <h1>Enter New Sale</h1>
+    <br />
+    <form action="#" th:action="@{/savesales}" th:object="${sale}"
+          method="post">
+        <!--<a href="/indexitem" onClick="MyWindow=window.open('http://localhost:8080/indexitem','MyWindow','width=600,height=300'); return false;">Check Item</a>
+-->
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID Item:</td>
+                <!--<td><input type="text" th:field="*{iditem}" /></td>-->
+                <td>
+                    <select th:field="*{item}" >
+                    <!--<select >-->
+                        <!--<option value="0">Select Item</option>-->
+                        <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.name}"></option>
+                    <!--<option th:each="p : ${listEducation}" th:value="${p}" th:text="${p}" />-->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td><input type="text" th:field="*{quantity}" /></td>
+            </tr>
+            <tr>
+                <td>Amount (Rupiah):</td>
+                <td><input type="text" th:field="*{subtotal}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
